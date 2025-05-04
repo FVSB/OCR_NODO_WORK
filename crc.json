@@ -1,0 +1,653 @@
+{
+    "status": "ok",
+    "message-type": "work-list",
+    "message-version": "1.0.0",
+    "message": {
+        "facets": {},
+        "total-results": 5640219,
+        "items": [
+            {
+                "indexed": {
+                    "date-parts": [
+                        [
+                            2025,
+                            2,
+                            6
+                        ]
+                    ],
+                    "date-time": "2025-02-06T05:13:28Z",
+                    "timestamp": 1738818808064,
+                    "version": "3.37.0"
+                },
+                "reference-count": 43,
+                "publisher": "Informa UK Limited",
+                "funder": [
+                    {
+                        "name": "Modeling, resolution and Applications",
+                        "award": [
+                            "PN223LH010–042"
+                        ]
+                    },
+                    {
+                        "name": "PNCB, Cuba. PREI-DGAPA-UNAM",
+                        "award": [
+                            "(DGAP/DFAJ27 2OI2O23)"
+                        ]
+                    },
+                    {
+                        "name": "PAPIIT DGAPA UNAM",
+                        "award": [
+                            "IN101822"
+                        ]
+                    }
+                ],
+                "content-domain": {
+                    "domain": [
+                        "www.tandfonline.com"
+                    ],
+                    "crossmark-restriction": true
+                },
+                "short-container-title": [
+                    "International Journal of Modelling and Simulation"
+                ],
+                "DOI": "10.1080/02286203.2025.2457762",
+                "type": "journal-article",
+                "created": {
+                    "date-parts": [
+                        [
+                            2025,
+                            2,
+                            5
+                        ]
+                    ],
+                    "date-time": "2025-02-05T08:10:56Z",
+                    "timestamp": 1738743056000
+                },
+                "page": "1-22",
+                "update-policy": "https://doi.org/10.1080/tandf_crossmark_01",
+                "source": "Crossref",
+                "is-referenced-by-count": 0,
+                "title": [
+                    "Multipopulation mathematical modeling of vaccination campaign of COVID-19 in Cuba"
+                ],
+                "prefix": "10.1080",
+                "author": [
+                    {
+                        "ORCID": "https://orcid.org/0000-0001-7702-6063",
+                        "authenticated-orcid": false,
+                        "given": "Raúl",
+                        "family": "Guinovart-Díaz",
+                        "sequence": "first",
+                        "affiliation": [
+                            {
+                                "name": "Universidad de La Habana",
+                                "place": [
+                                    "La Habana, Cuba"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ORCID": "https://orcid.org/0000-0003-1189-6773",
+                        "authenticated-orcid": false,
+                        "given": "Wilfredo",
+                        "family": "Morales-Lezca",
+                        "sequence": "additional",
+                        "affiliation": [
+                            {
+                                "name": "Universidad de La Habana",
+                                "place": [
+                                    "La Habana, Cuba"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ORCID": "https://orcid.org/0000-0001-6015-4261",
+                        "authenticated-orcid": false,
+                        "given": "Isidro",
+                        "family": "Abelló-Ugalde",
+                        "sequence": "additional",
+                        "affiliation": [
+                            {
+                                "name": "Universidad de La Habana",
+                                "place": [
+                                    "La Habana, Cuba"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ORCID": "https://orcid.org/0000-0002-7499-3821",
+                        "authenticated-orcid": false,
+                        "given": "Julián",
+                        "family": "Bravo-Castillero",
+                        "sequence": "additional",
+                        "affiliation": [
+                            {
+                                "name": "Universidad Nacional Autónoma de México",
+                                "place": [
+                                    "Merida, México"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ORCID": "https://orcid.org/0000-0003-0213-5630",
+                        "authenticated-orcid": false,
+                        "given": "Kuppalapalle",
+                        "family": "Vajravelu",
+                        "sequence": "additional",
+                        "affiliation": [
+                            {
+                                "name": "University of Central Florida",
+                                "place": [
+                                    "Orlando, USA"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "ORCID": "https://orcid.org/0000-0003-2941-0487",
+                        "authenticated-orcid": false,
+                        "given": "David",
+                        "family": "Guinovart",
+                        "sequence": "additional",
+                        "affiliation": [
+                            {
+                                "name": "University of Minnesota",
+                                "place": [
+                                    "Austin, USA"
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "member": "301",
+                "published-online": {
+                    "date-parts": [
+                        [
+                            2025,
+                            2,
+                            5
+                        ]
+                    ]
+                },
+                "reference": [
+                    {
+                        "issue": "772",
+                        "key": "e_1_3_3_2_1",
+                        "first-page": "700",
+                        "article-title": "A contribution to the mathematical theory of epi- demics",
+                        "volume": "115",
+                        "author": "Kermack WO",
+                        "year": "1927",
+                        "unstructured": "Kermack WO, McKendrick AG. A contribution to the mathematical theory of epi- demics. Proc R Soc Lond Ser A, Containing Papers Math Phys Character. 1927;115(772):700–721. Available from: http://www.jstor.org/stable/94815",
+                        "journal-title": "Proc R Soc Lond Ser A, Containing Papers Math Phys Character"
+                    },
+                    {
+                        "key": "e_1_3_3_3_1",
+                        "doi-asserted-by": "publisher",
+                        "DOI": "10.1007/s11071-020-05743-y"
+                    },
+                    {
+                        "key": "e_1_3_3_4_1",
+                        "doi-asserted-by": "publisher",
+                        "DOI": "10.1038/s41598-021-97260-0"
+                    },
+                    {
+                        "key": "e_1_3_3_5_1",
+                        "doi-asserted-by": "publisher",
+                        "DOI": "10.1080/09720510.2018.1550032"
+                    },
+                    {
+                        "key": "e_1_3_3_6_1",
+                        "doi-asserted-by": "publisher",
+                        "DOI": "10.1371/journal.pone.0244536"
+                    },
+                    {
+                        "key": "e_1_3_3_7_1",
+                        "doi-asserted-by": "publisher",
+                        "DOI": "10.1016/j.chaos.2020.110057"
+                    },
+                    {
+                        "key": "e_1_3_3_8_1",
+                        "doi-asserted-by": "publisher",
+                        "DOI": "10.1371/journal.pone.0240393"
+                    },
+                    {
+                        "key": "e_1_3_3_9_1",
+                        "doi-asserted-by": "publisher",
+                        "DOI": "10.1080/02286203.2019.1611311"
+                    },
+                    {
+                        "key": "e_1_3_3_10_1",
+                        "doi-asserted-by": "publisher",
+                        "DOI": "10.1080/02286203.2024.2334979"
+                    },
+                    {
+                        "issue": "4",
+                        "key": "e_1_3_3_11_1",
+                        "first-page": "149",
+                        "article-title": "Modelling and simulation for rumour propagation on scale-free network with non-uniform propagation rates",
+                        "volume": "34",
+                        "author": "Sun R",
+                        "year": "2014",
+                        "unstructured": "Sun R, Luo W. Modelling and simulation for rumour propagation on scale-free network with non-uniform propagation rates. Int J Modell Simul. 2014;34(4):149–154. Available from: https://www.tandfonline.com/doi/abs/10.2316/Journal.205.2014.4.205-5965",
+                        "journal-title": "Int J Modell Simul"
+                    },
+                    {
+                        "key": "e_1_3_3_12_1",
+                        "doi-asserted-by": "publisher",
+                        "DOI": "10.1063/5.0066912"
+                    },
+                    {
+                        "key": "e_1_3_3_13_1",
+                        "doi-asserted-by": "crossref",
+                        "first-page": "100423",
+                        "DOI": "10.1016/j.lana.2022.100423",
+                        "article-title": "Safety and efficacy of the two doses conjugated protein-based SOBERANA-02 COVID-19 vaccine and of a heterologous three-dose combination with SOBERANA- Plus: a double-blind, randomised, placebo-controlled phase 3 clinical trial",
+                        "volume": "18",
+                        "author": "Toledo-Romaní ME",
+                        "year": "2023",
+                        "unstructured": "Toledo-Romaní ME, García-Carmenate M, Valenzuela-Silva C, et al. Safety and efficacy of the two doses conjugated protein-based SOBERANA-02 COVID-19 vaccine and of a heterologous three-dose combination with SOBERANA- Plus: a double-blind, randomised, placebo-controlled phase 3 clinical trial. Lancet Reg Health - Americas. 2023;18:100423. Available from: https://www.sciencedirect.com/science/article/pii/S2667193X2200240X",
+                        "journal-title": "Lancet Reg Health - Americas"
+                    },
+                    {
+                        "key": "e_1_3_3_14_1",
+                        "doi-asserted-by": "publisher",
+                        "DOI": "10.1016/j.lana.2022.100366"
+                    },
+                    {
+                        "key": "e_1_3_3_15_1",
+                        "doi-asserted-by": "publisher",
+                        "DOI": "10.2139/ssrn.4397049"
+                    },
+                    {
+                        "key": "e_1_3_3_16_1",
+                        "unstructured": "COVID-19 data explorer — ourworldindata.Org. 2023 [cited 2023 Jun 28]. Available from: https://ourworldindata.org/explorers/coronavirus-data-explorer"
+                    },
+                    {
+                        "key": "e_1_3_3_17_1",
+                        "doi-asserted-by": "publisher",
+                        "DOI": "10.4269/ajtmh.20-0642"
+                    },
+                    {
+                        "issue": "1",
+                        "key": "e_1_3_3_18_1",
+                        "doi-asserted-by": "crossref",
+                        "first-page": "2",
+                        "DOI": "10.1111/tmi.13504",
+                        "article-title": "Comorbidities and the COVID-19 pandemic dynamics in Africa",
+                        "volume": "26",
+                        "author": "Anjorin AA",
+                        "year": "2021",
+                        "unstructured": "Anjorin AA, Abioye AI, Asowata OE, et al. Comorbidities and the COVID-19 pandemic dynamics in Africa. Trop Med Int Health. 2021;26(1):2–13. https://onlinelibrary.wiley.com/doi/abs/10.1111/tmi.13504",
+                        "journal-title": "Trop Med Int Health"
+                    },
+                    {
+                        "issue": "4",
+                        "key": "e_1_3_3_19_1",
+                        "article-title": "Epidemic and pandemic viral infections: impact on tuberculosis and the lung: a consensus by the world association for infectious diseases and immunological disorders (WAidid), global tuberculosis network (GTN), and members of the European Society of Clinical Microbiology and Infectious Diseases Study Group for Mycobacterial Infections (ESGMYC)",
+                        "volume": "56",
+                        "author": "Ong CWM",
+                        "year": "2020",
+                        "unstructured": "Ong CWM, Migliori GB, Raviglione M. Epidemic and pandemic viral infections: impact on tuberculosis and the lung: a consensus by the world association for infectious diseases and immunological disorders (WAidid), global tuberculosis network (GTN), and members of the European Society of Clinical Microbiology and Infectious Diseases Study Group for Mycobacterial Infections (ESGMYC). Eur Respir J. 2020;56(4):1-26.",
+                        "journal-title": "Eur Respir J"
+                    },
+                    {
+                        "key": "e_1_3_3_20_1",
+                        "doi-asserted-by": "publisher",
+                        "DOI": "10.26633/RPSP.2023.34"
+                    },
+                    {
+                        "issue": "1",
+                        "key": "e_1_3_3_21_1",
+                        "doi-asserted-by": "crossref",
+                        "first-page": "522",
+                        "DOI": "10.1002/jmv.26194",
+                        "article-title": "Dengue and COVID-19, overlapping epidemics? An analysis from Colombia",
+                        "volume": "93",
+                        "author": "Cardona-Ospina JA",
+                        "year": "2021",
+                        "unstructured": "Cardona-Ospina JA, Arteaga-Livias K, Villamil‐Gómez WE, et al. Dengue and COVID-19, overlapping epidemics? An analysis from Colombia. J Med Virol. 2021;93(1):522–527. Available from: https://onlinelibrary.wiley.com/doi/abs/10.1002/jmv.26194",
+                        "journal-title": "J Med Virol"
+                    },
+                    {
+                        "issue": "9",
+                        "key": "e_1_3_3_22_1",
+                        "first-page": "210",
+                        "article-title": "Coagulopathy of Dengue and COVID-19: clinical considerations",
+                        "volume": "7",
+                        "author": "Islam A",
+                        "year": "2022",
+                        "unstructured": "Islam A, Cockcroft C, Elshazly S, et al. Coagulopathy of Dengue and COVID-19: clinical considerations. Tropical Med. 2022;7(9):210. Available from: https://www.mdpi.com/2414-6366/7/9/210",
+                        "journal-title": "Tropical Med"
+                    },
+                    {
+                        "key": "e_1_3_3_23_1",
+                        "doi-asserted-by": "crossref",
+                        "first-page": "100328",
+                        "DOI": "10.1016/j.health.2024.100328",
+                        "article-title": "A non-linear deterministic mathematical model for investigating the population dynamics of COVID-19 in the presence of vaccination",
+                        "volume": "5",
+                        "author": "Omorogie EO",
+                        "year": "2024",
+                        "unstructured": "Omorogie EO, Owolabi KM, Olabode BT. A non-linear deterministic mathematical model for investigating the population dynamics of COVID-19 in the presence of vaccination. Healthcare Analyt. 2024;5:100328. Available from: https://www.sciencedirect.com/science/article/pii/S2772442524000303",
+                        "journal-title": "Healthcare Analyt"
+                    },
+                    {
+                        "key": "e_1_3_3_24_1",
+                        "doi-asserted-by": "crossref",
+                        "first-page": "100157",
+                        "DOI": "10.1016/j.health.2023.100157",
+                        "article-title": "A bifurcation analysis and model of covid-19 transmission dynamics with post-vaccination infection impact",
+                        "volume": "3",
+                        "author": "Idisi OI",
+                        "year": "2023",
+                        "unstructured": "Idisi OI, Yusuf TT, Owolabi KM, et al. A bifurcation analysis and model of covid-19 transmission dynamics with post-vaccination infection impact. Healthcare Analyt. 2023;3:100157. Available from: https://www.sciencedirect.com/science/article/pii/S2772442523000242",
+                        "journal-title": "Healthcare Analyt"
+                    },
+                    {
+                        "issue": "1",
+                        "key": "e_1_3_3_25_1",
+                        "doi-asserted-by": "crossref",
+                        "first-page": "83",
+                        "DOI": "10.1016/0025-5564(94)90025-6",
+                        "article-title": "Some discrete-time SI, SIR, and SIS epidemic models",
+                        "volume": "124",
+                        "author": "Allen LJS",
+                        "year": "1994",
+                        "unstructured": "Allen LJS. Some discrete-time SI, SIR, and SIS epidemic models. Math Biosci. 1994;124(1):83–105. Available from: https://www.sciencedirect.com/science/article/pii/0025556494900256",
+                        "journal-title": "Math Biosci"
+                    },
+                    {
+                        "issue": "1",
+                        "key": "e_1_3_3_26_1",
+                        "doi-asserted-by": "crossref",
+                        "first-page": "143",
+                        "DOI": "10.5540/tcam.2022.023.01.00143",
+                        "article-title": "A SIR model with spatially distributed multiple populations interactions for disease dissemination",
+                        "volume": "23",
+                        "author": "Marques JC",
+                        "year": "2022",
+                        "unstructured": "Marques JC, Cezaro AD, Lazo MJ. A SIR model with spatially distributed multiple populations interactions for disease dissemination. Trends Com- Put Appl Math. 2022;23(1):143–154. Available from: https://tema.sbmac.org.br/tema/article/view/1572",
+                        "journal-title": "Trends Com- Put Appl Math"
+                    },
+                    {
+                        "key": "e_1_3_3_27_1",
+                        "doi-asserted-by": "publisher",
+                        "DOI": "10.1371/journal.pone.0250765"
+                    },
+                    {
+                        "key": "e_1_3_3_28_1",
+                        "doi-asserted-by": "crossref",
+                        "first-page": "109953",
+                        "DOI": "10.1016/j.chaos.2020.109953",
+                        "article-title": "A nonlinear epidemiological model considering asymptotic and quarantine classes for SARS CoV-2 virus",
+                        "volume": "138",
+                        "author": "Mishra AM",
+                        "year": "2020",
+                        "unstructured": "Mishra AM, Purohit SD, Owolabi KM, et al. A nonlinear epidemiological model considering asymptotic and quarantine classes for SARS CoV-2 virus. Chaos, Solitons & Fractals. 2020;138:109953. Available from: https://www.sciencedirect.com/science/article/pii/S0960077920303520",
+                        "journal-title": "Chaos, Solitons & Fractals"
+                    },
+                    {
+                        "key": "e_1_3_3_29_1",
+                        "doi-asserted-by": "crossref",
+                        "first-page": "100156",
+                        "DOI": "10.1016/j.dajour.2022.100156",
+                        "article-title": "A new fractional mathematical model to study the impact of vaccination on COVID-19 outbreaks",
+                        "volume": "6",
+                        "author": "Shyamsunder BS",
+                        "year": "2023",
+                        "unstructured": "Shyamsunder BS, Bhatter S, Jangid K, et al. A new fractional mathematical model to study the impact of vaccination on COVID-19 outbreaks. Decis Analyt J. 2023;6:100156. Available from: https://www.sciencedirect.com/science/article/pii/S277266222200087X",
+                        "journal-title": "Decis Analyt J"
+                    },
+                    {
+                        "key": "e_1_3_3_30_1",
+                        "doi-asserted-by": "publisher",
+                        "DOI": "10.1080/27690911.2022.2116435"
+                    },
+                    {
+                        "key": "e_1_3_3_31_1",
+                        "doi-asserted-by": "publisher",
+                        "DOI": "10.1038/s41467-020-19798-3"
+                    },
+                    {
+                        "key": "e_1_3_3_32_1",
+                        "first-page": "101",
+                        "volume-title": "International Conferences & Exhibition on Nanotechnologies, Organic Electronics & Nanomedicine – NANOTEXNOLOGY",
+                        "volume": "54",
+                        "author": "Jayatilaka R",
+                        "year": "2022",
+                        "unstructured": "Jayatilaka R, Patel R, Brar M. A mathematical model of COVID-19 transmission. In: International Conferences & Exhibition on Nanotechnologies, Organic Electronics & Nanomedicine – NANOTEXNOLOGY, Thessaloniki, Greece, from July 4 to July 11, 2020; 2022. Vol. 54. p. 101–112."
+                    },
+                    {
+                        "key": "e_1_3_3_33_1",
+                        "doi-asserted-by": "publisher",
+                        "DOI": "10.1371/journal.pcbi.1009098"
+                    },
+                    {
+                        "key": "e_1_3_3_34_1",
+                        "doi-asserted-by": "publisher",
+                        "DOI": "10.1371/journal.pone.0254145"
+                    },
+                    {
+                        "key": "e_1_3_3_35_1",
+                        "volume-title": "Nonlinear dyn and chaos",
+                        "author": "Strogatz SH",
+                        "year": "2019",
+                        "unstructured": "Strogatz SH. Nonlinear dyn and chaos. 2nd ed. London, (UK): CRC Press; 2019.",
+                        "edition": "2"
+                    },
+                    {
+                        "key": "e_1_3_3_36_1",
+                        "doi-asserted-by": "publisher",
+                        "DOI": "10.1038/s41598-023-30800-y"
+                    },
+                    {
+                        "key": "e_1_3_3_37_1",
+                        "doi-asserted-by": "crossref",
+                        "first-page": "1236",
+                        "DOI": "10.1016/j.idm.2021.09.002",
+                        "article-title": "Mathematical models for assessing vaccination scenarios in several provinces in Indonesia",
+                        "volume": "6",
+                        "author": "Nuraini N",
+                        "year": "2021",
+                        "unstructured": "Nuraini N, Sukandar KK, Hadisoemarto P, et al. Mathematical models for assessing vaccination scenarios in several provinces in Indonesia. Infect Disease Model. 2021;6:1236–1258. Available from: https://www.sciencedirect.com/science/article/pii/S2468042721000634",
+                        "journal-title": "Infect Disease Model"
+                    },
+                    {
+                        "key": "e_1_3_3_38_1",
+                        "unstructured": "Vel´azquez-Ricardo A. Cuba en datos: Envejecimiento y esperanza de vida ¿qu´e dicen los indicadores demogra´ficos? 2023 [cited 2024 Apr 1]. Available from: https://www.infomed.scu.sld.cu/cuba-en-datos-envejecimiento-y-esperanza-de-vida-que-dicen-los-indicadores-demograficos"
+                    },
+                    {
+                        "issue": "18",
+                        "key": "e_1_3_3_39_1",
+                        "doi-asserted-by": "crossref",
+                        "first-page": "1708",
+                        "DOI": "10.1056/NEJMoa2002032",
+                        "article-title": "Clinical characteristics of coronavirus disease 2019 in China",
+                        "volume": "382",
+                        "author": "Guan W-J",
+                        "year": "2020",
+                        "unstructured": "Guan W-J, Ni Z-Y, Hu, Y et al. Clinical characteristics of coronavirus disease 2019 in China. N Engl J Med. 2020;382(18):1708–1720. Available from: https://www.nejm.org/doi/full/10.1056/NEJMoa2002032",
+                        "journal-title": "N Engl J Med"
+                    },
+                    {
+                        "issue": "6",
+                        "key": "e_1_3_3_40_1",
+                        "doi-asserted-by": "crossref",
+                        "first-page": "e14",
+                        "DOI": "10.1016/j.jinf.2020.03.005",
+                        "article-title": "Clinical features of covid-19 in elderly patients: a comparison with young and middle-aged patients",
+                        "volume": "80",
+                        "author": "Liu K",
+                        "year": "2020",
+                        "unstructured": "Liu K, Chen Y, Lin R, et al. Clinical features of covid-19 in elderly patients: a comparison with young and middle-aged patients. J Infect. 2020;80(6):e14–e18. Available from: https://www.sciencedirect.com/science/article/pii/S016344532030116X",
+                        "journal-title": "J Infect"
+                    },
+                    {
+                        "key": "e_1_3_3_41_1",
+                        "doi-asserted-by": "publisher",
+                        "DOI": "10.1007/s11538-020-00726-x"
+                    },
+                    {
+                        "issue": "10228",
+                        "key": "e_1_3_3_42_1",
+                        "doi-asserted-by": "crossref",
+                        "first-page": "931",
+                        "DOI": "10.1016/S0140-6736(20)30567-5",
+                        "article-title": "How will country-based mitigation measures influence the course of the COVID-19 epidemic?",
+                        "volume": "395",
+                        "author": "Anderson RM",
+                        "year": "2020",
+                        "unstructured": "Anderson RM, Heesterbeek H, Klinkenberg D, et al. How will country-based mitigation measures influence the course of the COVID-19 epidemic? Lancet. 2020;395(10228):931–934. Available from: https://www.sciencedirect.com/science/article/pii/S0140673620305675",
+                        "journal-title": "Lancet"
+                    },
+                    {
+                        "issue": "4",
+                        "key": "e_1_3_3_43_1",
+                        "doi-asserted-by": "crossref",
+                        "first-page": "3040",
+                        "DOI": "10.3934/mbe.2020172",
+                        "article-title": "Predicting the cumulative number of cases for the covid-19 epidemic in china from early data",
+                        "volume": "17",
+                        "author": "Liu Z",
+                        "year": "2020",
+                        "unstructured": "Liu Z, Magal P, Seydi O, et al. Predicting the cumulative number of cases for the covid-19 epidemic in china from early data. MBE. 2020;17(4):3040–3051. Available from: https://www.aimspress.com/article/doi/10.3934/mbe.2020172",
+                        "journal-title": "MBE"
+                    },
+                    {
+                        "key": "e_1_3_3_44_1",
+                        "doi-asserted-by": "crossref",
+                        "first-page": "323",
+                        "DOI": "10.1016/j.idm.2020.03.003",
+                        "article-title": "A COVID-19 epidemic model with latency period",
+                        "volume": "5",
+                        "author": "Liu Z",
+                        "year": "2020",
+                        "unstructured": "Liu Z, Magal P, Seydi O, et al. A COVID-19 epidemic model with latency period. Infectious Disease Model. 2020;5:323–337. Available from: https://www.sciencedirect.com/science/article/pii/S2468042720300099",
+                        "journal-title": "Infectious Disease Model"
+                    }
+                ],
+                "container-title": [
+                    "International Journal of Modelling and Simulation"
+                ],
+                "language": "en",
+                "link": [
+                    {
+                        "URL": "https://www.tandfonline.com/doi/pdf/10.1080/02286203.2025.2457762",
+                        "content-type": "unspecified",
+                        "content-version": "vor",
+                        "intended-application": "similarity-checking"
+                    }
+                ],
+                "deposited": {
+                    "date-parts": [
+                        [
+                            2025,
+                            2,
+                            5
+                        ]
+                    ],
+                    "date-time": "2025-02-05T08:11:20Z",
+                    "timestamp": 1738743080000
+                },
+                "score": 48.56715,
+                "resource": {
+                    "primary": {
+                        "URL": "https://www.tandfonline.com/doi/full/10.1080/02286203.2025.2457762"
+                    }
+                },
+                "issued": {
+                    "date-parts": [
+                        [
+                            2025,
+                            2,
+                            5
+                        ]
+                    ]
+                },
+                "references-count": 43,
+                "alternative-id": [
+                    "10.1080/02286203.2025.2457762"
+                ],
+                "URL": "https://doi.org/10.1080/02286203.2025.2457762",
+                "ISSN": [
+                    "0228-6203",
+                    "1925-7082"
+                ],
+                "issn-type": [
+                    {
+                        "value": "0228-6203",
+                        "type": "print"
+                    },
+                    {
+                        "value": "1925-7082",
+                        "type": "electronic"
+                    }
+                ],
+                "published": {
+                    "date-parts": [
+                        [
+                            2025,
+                            2,
+                            5
+                        ]
+                    ]
+                },
+                "assertion": [
+                    {
+                        "value": "The publishing and review policy for this title is described in its Aims & Scope.",
+                        "order": 1,
+                        "name": "peerreview_statement",
+                        "label": "Peer Review Statement"
+                    },
+                    {
+                        "value": "http://www.tandfonline.com/action/journalInformation?show=aimsScope&journalCode=tjms20",
+                        "URL": "http://www.tandfonline.com/action/journalInformation?show=aimsScope&journalCode=tjms20",
+                        "order": 2,
+                        "name": "aims_and_scope_url",
+                        "label": "Aim & Scope"
+                    },
+                    {
+                        "value": "2024-04-04",
+                        "order": 0,
+                        "name": "received",
+                        "label": "Received",
+                        "group": {
+                            "name": "publication_history",
+                            "label": "Publication History"
+                        }
+                    },
+                    {
+                        "value": "2025-01-20",
+                        "order": 2,
+                        "name": "accepted",
+                        "label": "Accepted",
+                        "group": {
+                            "name": "publication_history",
+                            "label": "Publication History"
+                        }
+                    },
+                    {
+                        "value": "2025-02-05",
+                        "order": 3,
+                        "name": "published",
+                        "label": "Published",
+                        "group": {
+                            "name": "publication_history",
+                            "label": "Publication History"
+                        }
+                    }
+                ]
+            }
+        ],
+        "items-per-page": 1,
+        "query": {
+            "start-index": 0,
+            "search-terms": null
+        }
+    }
+}
