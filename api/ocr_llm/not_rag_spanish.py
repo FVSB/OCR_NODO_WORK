@@ -89,3 +89,6 @@ if is_from_a_proyect:
     proyects_name = query(
         "Cual es el proyecto de ciencia e investigacion al que tributa? No vale la revista tipo "
     )
+
+
+

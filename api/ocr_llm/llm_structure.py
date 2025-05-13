@@ -1,5 +1,6 @@
 from markitdown import MarkItDown
 import openai
+import instructor
 from pydantic import BaseModel
 from typing import Type, TypeVar, List
 
@@ -100,3 +101,25 @@ class DocumentChat:
         self.llm_model: str = llm_model
         self.default_json_schema: BaseModel = default_json_schema
         self.temperature:float=temperature
+        
+        
+        
+class DocumentChatOllama(DocumentChat):
+    def __init__(
+        self,
+        document_path: str,
+        openai_base_url: str,
+        openai_api_key: str,
+        llm_model: str,
+        system_prompt: str,
+        default_json_schema: BaseModel = BasicResult,
+        temperature:float=0
+    ):
+        
+        
+        super().__init__(document_path, openai_base_url, openai_api_key, llm_model, system_prompt, default_json_schema,temperature)
+        self.api_client=instructor.from_openai(
+        super().api_client,
+    mode=instructor.Mode.JSON,
+)
+        
