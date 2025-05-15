@@ -72,7 +72,7 @@ class ExtractInfo:
     def get_from_next_cloud(self, sub_url: str) -> dict:
         url = f"{self.url_server}/{sub_url}"
         headers = {"OCS-APIRequest": "true"}
-        response = requests.post(
+        response = requests.get(
             url,
             auth=(self.user_name_next_cloud_api, self.password_next_cloud_api),
             headers=headers,
@@ -131,16 +131,16 @@ class ExtractInfo:
 
     def get_external_authors(self, data: dict) -> str:
         external_authors = self._get_authors(data, False)
-        return ({"columnId": 150, "value": external_authors},)
+        return {"columnId": 150, "value": external_authors}
 
     def get_internal_authors(self, data: dict) -> dict:
         internal_authors = self._get_authors(data, True)
-        return ({"columnId": 175, "value": internal_authors},)
+        return {"columnId": 175, "value": internal_authors}
 
     def get_editorials(self, data):
         issn = data["ISSN"][0]
         editorial = get_editorial_name_by_issn(issn)
-        return ({"columnId": 151, "value": editorial},)  # Revista
+        return {"columnId": 151, "value": editorial}  # Revista
 
     def get_issns(self, data) -> dict:
         issns_type = data["issn-type"]
@@ -153,7 +153,7 @@ class ExtractInfo:
                 issns_electronic = value
             elif item_type == "print":
                 issns_print = value
-        return ({"columnId": 153, "value": f"{issns_electronic}, {issns_print}"},)
+        return {"columnId": 153, "value": f"{issns_electronic}, {issns_print}"}
 
     def get_country_publish(self, doi) -> dict:
         return {"columnId": 154, "value": get_country_editorial_by_doi(doi)}
@@ -174,12 +174,11 @@ class ExtractInfo:
         for founder in founders:
             temp += f"{founder["name"]}, {founder["award"]}, \n"
 
-        return (
-            {
+        return {
                 "columnId": 536,
                 "value": temp,
-            },
-        )
+            }
+        
 
     def get_year(self, data):
         return {"columnId": 148, "value": data["indexed"]["date-parts"][0][0]}
@@ -249,7 +248,7 @@ class ExtractInfo:
         is_international = self.get_is_international(data)
         origin_external_authors = self.get_origin_external_authors(data)
         is_external_principal_author = self.get_is_external_principal_author(data)
-        means_of_dissemination = self.get_means_of_dissemination()
+        means_of_dissemination = self.get_means_of_dissemination(data)
         quartile = self.get_quartile(data)
         report_area = self.get_report_area(data)
 
@@ -282,8 +281,10 @@ class ExtractInfo:
         url = f"{self.url_server}/index.php/apps/tables/api/1/tables/{self.get_table_id()}/rows"
         auth = (self.user_name_next_cloud_api, self.password_next_cloud_api)
         datos = self.get_new_row(doi)
-
+      
         data_dict = {str(item["columnId"]): item["value"] for item in datos}
+        
+
 
         payload = {"data": data_dict}
 

@@ -1,6 +1,6 @@
 from extract_info import ExtractInfo
 
 
-obj=ExtractInfo("Publicaciones","minube.uh.cu","francisco.suarez@rect.uh.cu","1PassdePaco.")
+obj=ExtractInfo("Publicaciones","https://minube.uh.cu","francisco.suarez@rect.uh.cu","1PassdePaco.")
 
-obj.upload_data("")
+obj.upload_data("https://doi.org/10.1080/02286203.2025.2457762")
