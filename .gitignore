@@ -166,3 +166,8 @@ cython_debug/
 
 # venv
 .venv
+
+# All pdf files examples
+*.pdf
+*.PDF
+example.json

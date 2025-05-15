@@ -1,5 +1,5 @@
 import requests
-
+import traceback
 
 def get_country_editorial_by_doi(doi) -> str:
     # Paso 1: Obtener metadata del artículo
@@ -70,14 +70,20 @@ class ExtractInfo:
         self.password_next_cloud_api: str = password_next_cloud_api
 
     def get_from_next_cloud(self, sub_url: str) -> dict:
-        url = f"{self.url_server}/{sub_url}"
-        headers = {"OCS-APIRequest": "true"}
-        response = requests.get(
-            url,
-            auth=(self.user_name_next_cloud_api, self.password_next_cloud_api),
-            headers=headers,
-        )
-        return response.json()
+        try:
+            url = f"{self.url_server}/{sub_url}"
+            headers = {"OCS-APIRequest": "true"}
+            response = requests.get(
+                url,
+                auth=(self.user_name_next_cloud_api, self.password_next_cloud_api),
+                headers=headers,
+            )
+            response.raise_for_status()
+            return response.json()
+        except Exception as e:
+            print(f"Error in get_from_next_cloud  :{e}")
+            raise Exception(e)
+        
 
     def get_table_id(self):
         tables = self.get_from_next_cloud("index.php/apps/tables/api/1/tables")
@@ -88,16 +94,11 @@ class ExtractInfo:
 
         raise Exception(f"Don't exist table with title {name}")
 
-
-
-
-
-
-############################
-#                          #
-#      OCR ZONE            #
-#                          #
-############################
+    ############################
+    #                          #
+    #      OCR ZONE            #
+    #                          #
+    ############################
     def get_title(self, data: dict):
         return {"columnId": 145, "value": data["title"][0]}  # Nombre publicacion
 
@@ -172,13 +173,12 @@ class ExtractInfo:
         founders = data["funder"]
         temp = ""
         for founder in founders:
-            temp += f"{founder["name"]}, {founder["award"]}, \n"
+            temp += f"{founder["name"]}, {founder["award"] if "award" in founder else "" }, \n"
 
         return {
-                "columnId": 536,
-                "value": temp,
-            }
-        
+            "columnId": 536,
+            "value": temp,
+        }
 
     def get_year(self, data):
         return {"columnId": 148, "value": data["indexed"]["date-parts"][0][0]}
@@ -275,21 +275,26 @@ class ExtractInfo:
         ]
         return table_colums
 
-    def upload_data(self, doi):
-        # https://minube.uh.cu/index.php/apps/tables/api/1/tables/24/rows
+    def upload_data(self, doi: str) -> bool:
+        try:
+            # https://minube.uh.cu/index.php/apps/tables/api/1/tables/24/rows
 
-        url = f"{self.url_server}/index.php/apps/tables/api/1/tables/{self.get_table_id()}/rows"
-        auth = (self.user_name_next_cloud_api, self.password_next_cloud_api)
-        datos = self.get_new_row(doi)
-      
-        data_dict = {str(item["columnId"]): item["value"] for item in datos}
-        
+            url = f"{self.url_server}/index.php/apps/tables/api/1/tables/{self.get_table_id()}/rows"
+            auth = (self.user_name_next_cloud_api, self.password_next_cloud_api)
+            # filter the doi to add https://doi.org/
+            doi = f"https://doi.org/{doi}" if doi.startswith("10") else doi
+            datos = self.get_new_row(doi)
 
+            data_dict = {str(item["columnId"]): item["value"] for item in datos}
 
-        payload = {"data": data_dict}
+            payload = {"data": data_dict}
 
-        headers = {"OCS-APIRequest": "true", "Content-Type": "application/json"}
+            headers = {"OCS-APIRequest": "true", "Content-Type": "application/json"}
 
-        response = requests.post(url, json=payload, auth=auth, headers=headers)
-        print(response.status_code)
-        print(response.json())
+            response = requests.post(url, json=payload, auth=auth, headers=headers)
+
+            return response.status_code == 200
+
+        except Exception as e:
+            print(f"Error in upload_data: {e}, traceback: \n {traceback.format_exc()} ")
+            return False
