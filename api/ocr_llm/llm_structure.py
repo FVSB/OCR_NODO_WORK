@@ -34,7 +34,7 @@ class DocumentChat:
             messages=[
                 {"role": "system", "content": f"{self.system_prompt}"},
                 {"role": "system", "content": self.file_context},
-                {"role": "user", "content": query},
+                {"role": "user", "content": f"{query} /n  remember the json format {str(response_format)} /n the json:"},
             ],
             temperature=self.temperature
             
@@ -74,6 +74,7 @@ class DocumentChat:
            response
         )
 
+    
     def ask_document(self, query: str)->str:
         temp = self.ask_with_json_format(query, self.default_json_schema)
         return temp.result
@@ -103,7 +104,9 @@ class DocumentChat:
         self.temperature:float=temperature
         
         
-        
+
+
+       
 class DocumentChatOllama(DocumentChat):
     def __init__(
         self,

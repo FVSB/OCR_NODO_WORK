@@ -1,6 +1,7 @@
 import requests
 import traceback
 
+
 def get_country_editorial_by_doi(doi) -> str:
     # Paso 1: Obtener metadata del artículo
     url_work = f"https://api.crossref.org/works/{doi}"
@@ -83,7 +84,6 @@ class ExtractInfo:
         except Exception as e:
             print(f"Error in get_from_next_cloud  :{e}")
             raise Exception(e)
-        
 
     def get_table_id(self):
         tables = self.get_from_next_cloud("index.php/apps/tables/api/1/tables")
