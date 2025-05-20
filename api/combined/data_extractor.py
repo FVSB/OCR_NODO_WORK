@@ -2,10 +2,11 @@ from abc import ABC, abstractmethod
 from pydoc import doc
 from xml.dom.minidom import DocumentType
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import Type, TypeVar, List
 
-from ..ocr_llm.llm_structure import DocumentChat
+from utils import get_current_year
+from llm_structure import DocumentChat
 from datetime import datetime
 from enum import Enum
 import requests
@@ -18,30 +19,44 @@ T = TypeVar("T", bound=BaseModel)
 class TypeDocument(Enum):
     science_articule = "science_articule"
     book = "book"
-    book_chapter="book_chapter"
-    monograph="monograph"
-    conference_paper="conference_paper"
-    no_match="no_match"
+    book_chapter = "book_chapter"
+    monograph = "monograph"
+    conference_paper = "conference_paper"
+    no_match = "no_match"
+
 
 class TypeDocumentWithOther(TypeDocument):
     other = "other"
 
-class Means_Of_Dissemination(Enum):
-    press_media="press_media"
-    science_magazine="science_magazine"
-    blog="blog"
-    not_articule="not_articule"
-    other="other"
-    
+
+class MeansOfDissemination(Enum):
+    press_media = "press_media"
+    science_magazine = "science_magazine"
+    blog = "blog"
+
+
+class ChooseMeansOfDissemination(BaseModel):
+    means_of_disseminations: MeansOfDissemination = Field(
+        ..., description="The type of the document: "
+    )
+
+
+class MeansOfDisseminationWithNotArticule(MeansOfDissemination):
+
+    not_articule = "not_articule"
+    other = "other"
+
+
 class DocumentExtractor(ABC):
     """
     Abstract base class for document extractors.
     """
+
     @abstractmethod
-    def get_doi(self)->str|None:
-        
+    def get_doi(self) -> str | None:
+
         pass
-    
+
     @abstractmethod
     def get_title(self) -> str | None:
         """
@@ -214,7 +229,7 @@ class DocumentExtractor(ABC):
         pass
 
     @abstractmethod
-    def get_means_of_dissemination(self) -> Means_Of_Dissemination | None:
+    def get_means_of_dissemination(self) -> MeansOfDisseminationWithNotArticule | None:
         """
         Gets the means of dissemination of the document.
 
@@ -319,8 +334,6 @@ def get_editorial_name_by_issn(issn: str):
         return data["message"].get("publisher", "Editorial no encontrada")
     else:
         return f"Error en la consulta: {response.status_code}"
-
-
 
 
 class CrossRefExtractor(DocumentExtractor):
@@ -560,54 +573,51 @@ class CrossRefExtractor(DocumentExtractor):
         except Exception as e:
             return None
 
-    def get_means_of_dissemination(self)->Means_Of_Dissemination|None:
-        """
-        
-        """
+    def get_means_of_dissemination(self) -> MeansOfDisseminationWithNotArticule | None:
+        """ """
         try:
-            if self.type_document!=TypeDocumentWithOther.science_articule:
-                return Means_Of_Dissemination.not_articule
+            if self.type_document != TypeDocumentWithOther.science_articule:
+                return MeansOfDisseminationWithNotArticule.not_articule
             else:
-                issns=self.get_issns_or_isbn()
-                if  issns and (issns[0] or issns[1]):
-                    return Means_Of_Dissemination.science_magazine
-            
-            return Means_Of_Dissemination.other
-            
+                issns = self.get_issns_or_isbn()
+                if issns and (issns[0] or issns[1]):
+                    return MeansOfDisseminationWithNotArticule.science_magazine
+
+            return MeansOfDisseminationWithNotArticule.other
+
         except Exception as e:
             raise e
-        
-        
-    def get_quartile(self)->int|None:
+
+    def get_quartile(self) -> int | None:
         return None
-    
+
     def get_report_area(self):
         return None
-    
 
 
-    
 class ClassDocumentExtractorOCR(DocumentExtractor):
-    
 
-        
-    def __init__(self,llm:DocumentChat):
-        self.llm:DocumentChat=llm
-        
-        
+    def __init__(self, llm: DocumentChat):
+        self.llm: DocumentChat = llm
 
-    def _query(self,query:str,chunk=None):
-        return self.ask_document(query)  
-    
-    def _query_boolean(self,query:str,chunk=None)->bool:
+    def _query(self, query: str, chunk=None) -> str | None:
+        try:
+            return self.ask_document(query)
+        except Exception as e:
+            print(f"Exception in _query: {e} \n {traceback.format_exc()} ")
+            return None
+
+    def _query_boolean(self, query: str, chunk=None) -> bool:
         return self.llm.boolean_ask_document(query)
-    
-    def _query_with_pydantic_schema(self,query:str,schema:Type[T],chunk=None)->T:
-        return self.llm.ask_with_json_format(query,schema)
-        
-    
+
+    def _query_year(self, query: str):
+        return self.llm.year_ask_document(query=query)
+
+    def _query_with_pydantic_schema(self, query: str, schema: Type[T], chunk=None) -> T:
+        return self.llm.ask_with_json_format(query, schema)
+
     def get_doi(self):
-        query="""
+        query = """
         Please extract the DOI (Digital Object Identifier) 
         from the following document text. A DOI is 
         a unique alphanumeric string used to 
@@ -624,31 +634,27 @@ class ClassDocumentExtractorOCR(DocumentExtractor):
         pattern and return only the DOI.
         """
         return self._query(query)
-    
-    
-    
+
     def get_title(self):
-        query="""
+        query = """
         Tell me the title of the document.
-        """   
-        return self._query(query=query) 
-    
-    
-    def get_authors(self):
-        query="""
-        Tell me the name of the authors.
-        """    
+        """
         return self._query(query=query)
-    
+
+    def get_authors(self):
+        query = """
+        Tell me the name of the authors.
+        """
+        return self._query(query=query)
+
     def get_editorial(self):
-        query="""
+        query = """
         Tell me the name of the editorial of this articule
         """
         return self._query(query)
-    
-    
-    def get_type_document(self)->TypeDocument:
-        query=f"""
+
+    def get_type_document(self) -> TypeDocument:
+        query = f"""
         Given the following document text, 
         classify it as one of these categories: 
         {TypeDocument.book}, {TypeDocument.monograph}, 
@@ -656,11 +662,81 @@ class ClassDocumentExtractorOCR(DocumentExtractor):
         {TypeDocument.conference_paper}. If it doesn't clearly match any, 
         reply with {TypeDocument.no_match} and a brief reason. Document text:
         """
-        return self._query_with_pydantic_schema(query,TypeDocument)
-    
-    
-    
+        return self._query_with_pydantic_schema(query, TypeDocument)
+
+    def _get_issn_or_isbn_codes(self, is_issn: bool) -> tuple[str] | None:
+        """
+        Responde a tuple[bool] thats have a issn electronic, issn print
+        """
+        get_query_has_code = (
+            lambda is_electronic: f"Does the document contain {"issn" if is_issn else "isbn"} {"electronic" if is_electronic else "print"}?"
+        )
+        has_electronic_and_print: tuple[bool] = self._query_boolean(
+            get_query_has_code(True)
+        ), self._query_boolean(get_query_has_code(False))
+
+        get_query = (
+            lambda is_electronic: f"Give me the {"issn" if is_issn else "isbn"} {"electronic" if is_electronic else "print"}"
+        )
+        electronic = ""
+        if has_electronic_and_print[0]:
+            electronic = self._query(get_query(True))
+
+        print = ""
+        if has_electronic_and_print[1]:
+            print = self._query(get_query(False))
+
+        return electronic, print
+
+    def get_issns_or_isbn(self) -> tuple[str] | None:
+        type_ = self.get_type_document()
+        if type_ == TypeDocument.science_articule:
+            return self._get_issn_or_isbn_codes(True)
+        if type_ == TypeDocument.book:
+            return self._get_issn_or_isbn_codes(False)
+
+        return None, None
+
+    def get_country_published(self):
+        query = 'Please provide the city and country where the publication was issued, separated by a comma (e.g., "Havana, Cuba").'
+        return self._query(query)
+
+    def get_url(self):
+        query = "Please provide the url of the document"
+        return self._query(query)
+
+    def get_science_network(self):
+        return None
+
+    def get_founders(self):
+        query = f"""
+        Indicate the Science, Technology, and Innovation (STI) project(s) to which the publication contributes. Use the format: Code: Project Name. Separate each project with a newline character (\n). If not applicable, please indicate "Not applicable".
+
+        Example with one project:
+        STI001: Renewable Energy Research
+
+        Example with multiple projects:
+        STI001: Renewable Energy Research\nSTI023: Artificial Intelligence Development\nSTI045: Climate Change Studies
         
-        
-        
-        
+        """
+
+        return self._query(query=query)
+
+    def get_year(self) -> int | None:
+        query = f"""
+        Given the information below, identify the year
+        of publication as a four-digit number between 
+        1990 and {get_current_year()}. Provide only the 
+        year without additional explanation.
+        """
+        return self._query_year(query)
+
+    def get_is_international(self):
+        query = f"""
+        Given the following text or metadata of a document, classify its publication type into one of these categories:
+
+        - press_media
+        - science_magazine
+        - blog
+        """
+        return self._query_with_pydantic_schema(ChooseMeansOfDissemination)

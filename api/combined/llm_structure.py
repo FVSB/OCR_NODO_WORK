@@ -4,7 +4,7 @@ import instructor
 from pydantic import BaseModel, Field
 from typing import Annotated, Type, TypeVar, List
 
-from api.combined.utils import get_current_year
+from utils import get_current_year
 
 
 class BasicResult(BaseModel):
@@ -14,7 +14,18 @@ class BooleanResult(BaseModel):
     result:bool
     
     
-
+class YearResult(BaseModel):
+    """
+    Return a year between 1990 and current year
+    """
+    year_publish: Annotated[
+        int,
+        Field(
+            description=f"Year the document was published. Must be > 1990 and <= {get_current_year()} .",
+            gt=1990,
+            le=get_current_year(),
+        ),
+    ]
 
 def file_to_markdown_str(
     file_path: str, openai_client: openai.OpenAI = None, llm_model: str = None
@@ -87,6 +98,9 @@ class DocumentChat:
     def boolean_ask_document(self,query:str)->bool:
         temp = self.ask_with_json_format(query, BooleanResult)
         return temp.result
+    
+    def year_ask_document(self,query:str)->bool:
+        return self.ask_with_json_format(query,YearResult).year_publish
     
     def __init__(
         self,

@@ -157,7 +157,7 @@ class ExtractInfo:
         return {"columnId": 153, "value": f"{issns_electronic}, {issns_print}"}
 
     def get_country_publish(self, doi) -> dict:
-        return {"columnId": 154, "value": get_country_editorial_by_doi(doi)}
+        return {"columnId": 154, "value":get_country_editorial_by_doi(doi)}
 
     def get_url(self, url) -> dict:
         temp = f'{"{"}{"\""}title{"\""}:{"\""}{url}{"\""},{"\""}subline{"\""}:{"\""}URL{"\""},{"\""}providerId{"\""}:url,{"\""}value{"\""}:{"\""}{url}{"\""}'
