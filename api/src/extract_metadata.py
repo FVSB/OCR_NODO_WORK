@@ -2,7 +2,7 @@ from extract_info import ExtractInfo
 from pypdf import PdfReader
 from pathlib import Path
 from dotenv import load_dotenv
-from utils  import find_words_starting_with,get_text_from_pdf
+from utils import find_words_starting_with, get_text_from_pdf
 import os
 import requests
 
@@ -92,16 +92,14 @@ def _make_table_from_doi(doi: str):
     return obj.upload_data(doi)
 
 
-def extract_doi_from_text(document_path:str)->list[str]:
-    dc_str=get_text_from_pdf(document_path)
-    return find_words_starting_with(dc_str,"https://doi.org")
-    
-def main():
-    # Load env vars
-    load_dotenv()
-    
+def extract_doi_from_text(document_path: str) -> list[str]:
+    dc_str = get_text_from_pdf(document_path)
+    return find_words_starting_with(dc_str, "https://doi.org")
+
+
+def extract_data():
     files_path: list[str] = files_with_extension("shared", "pdf")
-    
+
     print(files_path)
     for file_path in files_path:
         title, authors, doi = extract_metadata(file_path)
@@ -109,18 +107,25 @@ def main():
         # If doi it,s not ( None or "")  extract metadata from this
         if doi and _make_table_from_doi(doi):
             print("Process_from doi")
-            return 
+            return
         elif _make_table_from_doi(get_doi_from_title(title)):  # If not doi
             # Extract from the real title the doi.
             print("Process_from title")
-            return 
-        #elif any(map(_make_table_from_doi,extract_doi_from_text(file_path))):
+            return
+        # elif any(map(_make_table_from_doi,extract_doi_from_text(file_path))):
         #    print("Extract from doi text extract ")
         #    return
-        
+
         else:
             print("Hace falta OCR")
-            
-            
+
+
+def main():
+    # Load env vars
+    load_dotenv()
+
+    extract_data()
+
+
 if __name__ == "__main__":
     main()
