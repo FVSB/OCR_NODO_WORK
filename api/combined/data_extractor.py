@@ -3,9 +3,9 @@ from pydoc import doc
 from xml.dom.minidom import DocumentType
 
 from pydantic import BaseModel, Field
-from typing import Type, TypeVar, List
+from typing import Callable, Type, TypeVar, List, Union
 
-from utils import get_current_year
+from utils import call_method, get_current_year
 from llm_structure import DocumentChat
 from datetime import datetime
 from enum import Enum
@@ -334,6 +334,28 @@ def get_editorial_name_by_issn(issn: str):
         return data["message"].get("publisher", "Editorial no encontrada")
     else:
         return f"Error en la consulta: {response.status_code}"
+
+
+def get_from_extractors(
+    extractors: list[DocumentExtractor],
+    _func: Callable,
+    first_non_null: bool = False,
+    filter: Callable = None,
+):
+
+    for extractor in extractors:
+        lis = []
+        res = call_method(_func, extractor)
+        if res:
+            if first_non_null:
+                return [res]
+            if not filter:
+                lis.append(res)
+
+            if filter and filter(res):
+                lis.append(res)
+
+        return res
 
 
 class CrossRefExtractor(DocumentExtractor):
@@ -740,3 +762,126 @@ class ClassDocumentExtractorOCR(DocumentExtractor):
         - blog
         """
         return self._query_with_pydantic_schema(ChooseMeansOfDissemination)
+
+
+class DocumentGestor:
+
+    def __init__(
+        self,
+        document_path: str,
+        extractors_by_api_db: list[DocumentExtractor],
+        extract_by_ocr: list[DocumentExtractor],
+    ):
+
+        self.document_path: str = document_path
+        self.extractors_by_api_db = extractors_by_api_db
+        self.extractors_by_ocr = extract_by_ocr
+
+    def _get_from_api_db_extractors(
+        self, _func: Callable, first_non_null: bool = False, filter: Callable = None
+    ) -> Union[object, list[object]]:
+        return get_from_extractors(self.extractors_by_api_db, _func)
+
+    def _get_from_extractors_by_ocr(
+        self, _func: Callable, first_non_null: bool = False, filter: Callable = None
+    ) -> Union[object, list[object]]:
+        return get_from_extractors(self.extractors_by_ocr, _func)
+
+    def _get_from_all_extractors(
+        self, _func: Callable, first_non_null: bool = False, filter: Callable = None
+    ) -> Union[object, list[object]]:
+        """
+        Get the _func without ()
+        first_non_null =True => return the first element not null   False=>return a list
+        Filter is a func [obj,bool] who recive a object and decide if is in the response
+        """
+        # api_db = self._get_from_api_db_extractors(_func)
+        # ocr = self._get_from_extractors_by_ocr(_func)
+        return get_from_extractors(
+            self.extractors_by_api_db + self.extractors_by_ocr,
+            _func,
+            first_non_null,
+            filter,
+        )
+
+    def get_title(self) -> str | None:
+        temp = self._get_from_all_extractors(DocumentExtractor.get_title, True)
+        if temp:
+            return temp
+        return None
+
+    def get_doi(self) -> str | None:
+
+        doi = self._get_from_all_extractors(DocumentExtractor.get_doi, True)
+        if doi:
+            return doi
+        return None
+
+    def get_external_authors(self) -> list[str]:
+        external_authors = self._get_from_all_extractors(
+            DocumentExtractor.get_external_authors, True
+        )
+        if external_authors:
+            return external_authors
+        return None
+
+    def get_editorial(self) -> str | None:
+        editorial = self._get_from_all_extractors(DocumentExtractor.get_editorial, True)
+        if editorial:
+            return editorial
+        return None
+
+    def get_issn(self):
+        issns = self._get_from_all_extractors(DocumentExtractor.get_issns_or_isbn, True)
+        if issns:
+            return issns
+        return None
+
+    def get_country_editorial(self):
+        country_editorial = self._get_from_all_extractors(
+            DocumentExtractor.get_country_published, True
+        )
+        if country_editorial:
+            return country_editorial
+        return None
+
+    def get_url_document(self) -> str | None:
+        url = self._get_from_all_extractors(DocumentExtractor.get_url, True)
+        if url:
+            return url
+        return None
+
+    def get_internal_authors(self) -> list[str] | None:
+        internal_authors = self._get_from_all_extractors(
+            DocumentExtractor.get_internal_authors, True
+        )
+        if internal_authors:
+            return internal_authors
+        return None
+
+    def get_scient_network(self)->str|None:
+        science_network=self._get_from_all_extractors(DocumentExtractor.get_science_network,True)
+        if science_network:
+            return science_network
+        return None
+    
+    
+    
+    def get_funders(self)->str|None:
+        funders=self._get_from_all_extractors(DocumentExtractor.get_founders,True)
+        if funders:
+            return funders
+        return None
+    
+    
+    def get_json(self):
+
+        name = self.get_title()
+        _doi = self.get_doi()
+        external_authors = self.get_external_authors()
+        editorial = self.get_editorial()
+        issns = self.get_issn()
+        url_document = self.get_url_document()
+        internal_authors = self.get_internal_authors()
+        scient_network= self.get_scient_network()
+        funders= self.get_funders()
